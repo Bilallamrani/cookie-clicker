@@ -1,8 +1,7 @@
 import "./index.css";
-<<<<<<< HEAD
+
 (() => {
    
-    var etiquette;
     var clickdouble =false;
     var clickboost=false;
     var score = 0;
@@ -13,21 +12,21 @@ import "./index.css";
             if(clickdouble==true){
                  score+=1;
             }else if(clickboost==true){
-                  score+=4;
+                  score+=3;
             }
             score++;
-            etiquette = score;
-            alert(score)
+          
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
     
     });
 
     
       document.getElementById("run1").addEventListener("click", () => {
-        var confirmer = confirm('vous voulez acheter ce multiplicateur *2 à 250 ptn ');
-         if(confirmer==true && score>20){
-             score=-250;
+        var confirmer = confirm('vous voulez acheter ce multiplicateur *2 à 50 ptn ');
+         if(confirmer==true && score>50){
+             score-=50;
              alert("felicitation vous avez obtenu le double *2");
-               etiquette=score;
+             document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
                clickdouble=true;
          }else{
                 alert("erreur ");
@@ -35,13 +34,13 @@ import "./index.css";
       });
      
 
-    document.getElementById("run2").addEventListener("click", () => {
-        var confirmer = confirm('vous voulez acheter ce booster à 450 ptn ');
+    document.getElementById("run").addEventListener("click", () => {
+        var confirmer = confirm('vous voulez acheter ce booster à 80 ptn ');
 
-          if(confirmer== true && score>30){
-               score-=350;
+          if(confirmer== true && score>80){
+               score-=80;
                alert("felicitation vous avez obtenu le bosster *4");
-                etiquette=score;
+             document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
                 clickboost=true;
                
           }else{
