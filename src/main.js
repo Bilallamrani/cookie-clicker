@@ -1,4 +1,5 @@
 import "./index.css";
+<<<<<<< HEAD
 (() => {
    
     var etiquette;
