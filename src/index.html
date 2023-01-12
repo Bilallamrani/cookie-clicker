@@ -9,23 +9,22 @@
 </head>
 
 <body>
-  <main
-    class="bg-gradient-to-r from-cyan-500 to-blue-500 px-[35px] pt-10 h-screen sm:px-[70px] flex flex-col align-center items-center justify-center">
+  <main>
+  <div class= "flex flex-row-reverse">
+    <button id="reset" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Reset</button>
+  </div>
+  <div class="flex flex-col items-center justify-center">
+    <img src="./cookie.jpg" class="cursor-pointer" id="cookie">
+    <div class="flex flex-col justify-around">
+      <button id="run" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Bonus</button>
+      <button id="run1" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Bonus x2</button>
+      <button id="run2" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Booster</button>
+      <button id="run3" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Score</button>
+    </div>
+  </div>
 
-    <section class="flex flex-col gap-2">
-      <h1 class="text-white text-6xl">Hello, 👋</h1>
-      <h1 class="text-white text-6xl">Swartz 7</h1>
-
-      <div class="py-4 flex flex-col gap-2">
-        <h2 class="text-4xl text-white">
-          Learn more about the tools used to build this here 👇
-        </h2>
-        <ul class="text-white text-2xl py-4 grid grid-cols-1 gap-2">
-          <li><a class="underline hover:text-purple-500" href="https://vitejs.dev/" target="_blank">Vite</a></li>
-          <li><a class="underline hover:text-purple-500" href="https://tailwindcss.com/docs/utility-first" target="_blank">Tailwind</a></li>
-        </ul>
-      </div>
-    </section>
+ 
+  
 
   </main>
   <script type="module" src="./main.js"></script>
