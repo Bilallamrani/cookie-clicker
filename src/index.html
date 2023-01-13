@@ -14,36 +14,40 @@
 
 <body>
   <main>
-
-  <div class="bg-center bg-cover bg-no-repeat" style="background-image: url(./src/public/wp2724629.webp);"></div>
-    
-  <div class= "flex flex-row-reverse">
-    <button id="reset" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Reset</button>
-  </div>
+    <div class= "flex flex-row-reverse">
+      <button id="reset" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Reset</button>
+    </div>
 
     <div class="text-2xl alert alert-info text-center" role="alert">
       <p id="clicker-counter">0</p>
       <p id="timeInSeconde">Secondes</p>     
     </div> 
+    
 
-  <div class="flex flex-col items-center justify-center">
-    <img src="./public/cookie.png" class="cursor-pointer bg-transparent w-25 h-25" id="cookie">
-
-    <div class="flex flex-col justify-around">
-      <button id="run" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Bonus</button>
-      <button id="run1" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Bonus x2</button>
-      <!-- <a href="#"><img src="./public/Booster.jpg" alt="button image" class="cursor-pointer bg-transparent"></a> -->
+    <div class="row">
       
-      <button id="run2" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Booster</button>
-      <button id="run3" class="bg-blue-500 m-2 px-4 py-2 rounded-lg text-white">Auto click</button>
+      <div class="image col-xs-6 col-md-3 col-lg-3">  
+          <img id="bonusx2" src="./public/x22.webp" class="justify-start" style="display: none">
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-6">
+    
+          <img src="./public/cookie.png" class="cursor-pointer mx-auto d-block w-60 h-60" id="cookie">
+      <div class="flex flex-col pt-4">
+          <button id="run" class="bg-blue-500 m-2 px-4 py-2 rounded-lg w-2/4 mx-auto d-block text-white">Bonus</button>
+          <button id="run1" class="bg-blue-500 m-2 px-4 py-2 rounded-lg w-2/4 mx-auto d-block text-white">Bonus x2</button>
+          <button id="run2" class="bg-blue-500 m-2 px-4 py-2 rounded-lg w-2/4 mx-auto d-block text-white">Booster</button>
+          <button id="run3" class="bg-blue-500 m-2 px-4 py-2 rounded-lg w-2/4 mx-auto d-block text-white">Auto click</button>
+      </div>
+      </div>
+      <div class="image col-xs-6 col-md-3 col-lg-3">
+          <img id="booster" src="./public/Booster-removebg-preview.png" class="justify-end" style="display: none">
+      </div>
     </div>
-  </div>
 
  
   
 
   </main>
- 
   <script type="module" src="./main.js"></script>
 </body>
 

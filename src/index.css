@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body{
+body{
     background-image: url(./public/wp2724629.webp);
     background-size: cover;
-} */
+}
+
+.image {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
