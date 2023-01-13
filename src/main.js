@@ -27,7 +27,7 @@ import "./index.css";
             }
             score++;
           
-            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
     
     });
     
