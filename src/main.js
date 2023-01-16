@@ -30,7 +30,47 @@ import "./index.css";
             document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
     
     });
+
     
+    
+    document.getElementById("run").addEventListener("click", () => {
+      if(cptBonus==1){
+
+        var confirmer = confirm('vous voulez acheter ce Bonus  à 250 ptn pour obtenir 200% ');
+     if(confirmer==true && score>250){
+         score-=250;
+         alert("felicitation vous avez obtenu le Bonus 200%");
+         document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+          clickAuto=false;
+          clickdouble=false;
+           clickBonus=true;
+           clickboost=false;
+            
+       
+           
+     }else{
+            alert("erreur ");
+     }
+    }else if(cptBonus>1){
+        var confirmer = confirm('vous voulez acheter ce Bonus 200% à '+250*cptBonus+'ptn ');
+        if(confirmer==true && score>250*cptBonus){
+            score-=250*cpt;
+            alert("felicitation vous avez obtenu ce bonus 200%");
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+              clickAuto=false;
+              clickdouble=false;
+              clickBonus=true;
+              clickboost=false;
+              
+    }else{
+        cptBonus--;
+        alert("erreur ");
+ }
+}
+     cptBonus++; 
+
+     
+});
 
     
     document.getElementById("run3").addEventListener("click", () => {
@@ -49,6 +89,7 @@ import "./index.css";
            
                
          }else{
+                  cptAuto--;
                 alert("erreur ");
          }
         }else if(cptAuto>1){
@@ -87,6 +128,7 @@ import "./index.css";
                clickboost=false;
                clickAuto=false;
          }else{
+                 cptDouble--;
                 alert("erreur ");
          }
         }else if(cptDouble>1){
@@ -123,7 +165,7 @@ import "./index.css";
                 clickAuto=false;
                
           }else{
-
+                    cptBooster--;
                     alert("dsl vous n'avez pas assez des points");
                 
           }
