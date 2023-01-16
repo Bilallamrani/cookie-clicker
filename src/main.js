@@ -24,14 +24,17 @@ import "./index.css";
             }else if(clickAuto== true){
                 score+=4;
                 setTimeout(() => {clickAuto=false}, 30000);
+            }else if(clickBonus== true){
+                  score+=250;
+                  clickBonus=false;
             }
             score++;
           
-            document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
     
     });
 
-    
+
     
     document.getElementById("run").addEventListener("click", () => {
       if(cptBonus==1){
@@ -122,9 +125,7 @@ import "./index.css";
          if(confirmer==true && score>50){
              score-=50;
              alert("felicitation vous avez obtenu le double *2");
-             bonusx2();
              document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-             document.getElementById ( 'run1' ) . innerHTML  = "50 ptn" ;
                clickdouble=true;
                clickBonus=false;
                clickboost=false;
@@ -139,7 +140,6 @@ import "./index.css";
                 score-=50*cpt;
                 alert("felicitation vous avez obtenu le double *2");
                 document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-                document.getElementById ( 'run1' ) . innerHTML  = 50*cptDouble+'ptn ';
                   clickdouble=true;
                   clickBonus=false;
                   clickboost=false;
@@ -154,17 +154,13 @@ import "./index.css";
      
 
     document.getElementById("run2").addEventListener("click", () => {
-
-
         if(cptBooster==1){
-
 
         var confirmer = confirm('vous voulez acheter ce booster à 80 ptn ');
 
           if(confirmer== true && score>80){
                score-=80;
-               alert("felicitation vous avez obtenu le booster *5");
-               booster();
+               alert("felicitation vous avez obtenu le bosster *4");
              document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
                 clickboost=true;
                 clickdouble=false;
@@ -172,10 +168,7 @@ import "./index.css";
                 clickAuto=false;
                
           }else{
-
                     cptBooster--;
-
-                            
                     alert("dsl vous n'avez pas assez des points");
                 
           }
@@ -199,47 +192,7 @@ import "./index.css";
 
         }
         cptBooster++;  
-
 });
-function bonusx2(){
-  const image = document.getElementById("bonusx2");
-  image.style.display = "block";
-    setTimeout(() => {
-      image.style.display = "none";
-    }, 4000);
-} 
-
-function bonusx5(){
-  const image = document.getElementById("bonusx5");
-  image.style.display = "block";
-  setTimeout(() => {
-    image.style.display = "none";
-  }, 4000);
-  
-}
-
-function booster(){
-  const image = document.getElementById("booster");
-  image.style.display = "block";
-  setTimeout(() => {
-    image.style.display = "none";
-  }, 4000);
-  
-}
-
-// const button = document.getElementById("cookie");
-// const image = document.getElementById("bonusx2");
-
-// button.addEventListener("click", function() {
-//   if (score === 30) {
-//     image.style.display = "block";
-//     setTimeout(() => {
-//       image.style.display = "none";
-//     }, 3000);
-//   }
-// });
-
-
   
 function timeSeconde(){
     //const departMinutes = 1;
