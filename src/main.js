@@ -74,25 +74,15 @@ import * as toastr from 'toastr';
                 score+=4;
                 setTimeout(() => {clickAuto=false}, 30000);
                 
-              
-               
-
-
             }else if(clickBonus== true){
                   score+=250;
                   clickBonus=false;
             }
             score++;
-          
             document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+
     });
     
-    
-
-      
-
-
-
     document.getElementById("run").addEventListener("click", () => {
       if(cptBonus==1){
 
@@ -203,7 +193,6 @@ import * as toastr from 'toastr';
 cptDouble++;
 });
     
-
     document.getElementById("run2").addEventListener("click", () => {
 
         if(cptBooster==1){
@@ -228,11 +217,7 @@ cptDouble++;
                 score -= 80;
                 toastr.success("Félicitation, vous avez obtenu le bonus x5");
                 booster();
-                document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-
- 
-
-     
+                document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
                 clickboost=true;
                 clickdouble=false;
                 clickBonus=false;
@@ -406,5 +391,5 @@ function timeSecondeAzero(){
   }, 1000);
   
  }
-
+ 
 })();
