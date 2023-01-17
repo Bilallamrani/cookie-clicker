@@ -141,6 +141,7 @@ import "./index.css";
             clickdouble=false;
             clickBonus=false;
             clickboost=false;
+            bonusx5();
             timeSeconde();
            
                
@@ -159,6 +160,7 @@ import "./index.css";
                   clickdouble=false;
                   clickBonus=false;
                   clickboost=false;
+                  bonusx5();
                  
         }else{
             cptAuto--;
@@ -184,6 +186,7 @@ import "./index.css";
                clickBonus=false;
                clickboost=false;
                clickAuto=false;
+               bonusx2();
          }else{
                  cptDouble--;
                 alert("erreur ");
@@ -198,6 +201,7 @@ import "./index.css";
                   clickBonus=false;
                   clickboost=false;
                   clickAuto=false;
+                  bonusx2();
         }else{
             cptDouble--;
             alert("erreur ");
@@ -220,6 +224,7 @@ import "./index.css";
                 clickdouble=false;
                 clickBonus=false;
                 clickAuto=false;
+                booster();
                
           }else{
                     cptBooster--;
@@ -237,6 +242,7 @@ import "./index.css";
                   clickdouble=false;
                   clickBonus=false;
                   clickAuto=false;
+                  booster();
                  
             }else{
                      cptBooster--;
@@ -285,7 +291,31 @@ function timeSeconde(){
     
    }
   
-
+   function bonusx2(){
+    const image = document.getElementById("bonusx2");
+    image.style.display = "block";
+      setTimeout(() => {
+        image.style.display = "none";
+      }, 4000);
+  } 
+  
+  function bonusx5(){
+    const image = document.getElementById("bonusx5");
+    image.style.display = "block";
+    setTimeout(() => {
+      image.style.display = "none";
+    }, 4000);
+    
+  }
+  
+  function booster(){
+    const image = document.getElementById("booster");
+    image.style.display = "block";
+    setTimeout(() => {
+      image.style.display = "none";
+    }, 4000);
+    
+  }
 
 
 })();
