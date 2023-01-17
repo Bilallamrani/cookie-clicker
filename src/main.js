@@ -13,18 +13,74 @@ import * as toastr from 'toastr';
     var cptBonus=1;
     var cptAuto=1;
 
+    let buttonRun = document.querySelector("#run");
+    buttonRun.disabled = true;
+    let buttonRun1 = document.querySelector("#run1");
+    buttonRun1.disabled = true;
+    let buttonRun2 = document.querySelector("#run2");
+    buttonRun2.disabled = true;
+    let buttonRun3 = document.querySelector("#run3");
+    buttonRun3.disabled = true;
+
+    document.getElementById("reset").addEventListener("click", () => {
+     clickdouble =false;
+     clickboost=false;
+     clickBonus= false;
+     clickAuto=false;
+     score = 0;
+     cptDouble =1;
+     cptBooster=1;
+     cptBonus=1;
+     cptAuto=1;
+
    
-
-
+    buttonRun.disabled = true;
+   
+    buttonRun1.disabled = true;
+   
+    buttonRun2.disabled = true;
+  
+    buttonRun3.disabled = true;
+    document.getElementById ( 'run' ).style.backgroundColor = "blue" ;
+    document.getElementById ( 'run1' ).style.backgroundColor = "blue" ;
+    document.getElementById ( 'run2' ).style.backgroundColor = "blue" ;
+    document.getElementById ( 'run3' ).style.backgroundColor = "blue" ;
+              document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+      
+      });
+  
   document.getElementById("cookie").addEventListener("click", () => {
-           
+    if(score > 50){
+      buttonRun1.disabled= false;
+      document.getElementById ( 'run1' ).style.backgroundColor = "red" ;
+      
+    } if(score>80){
+      buttonRun2.disabled=false;
+      document.getElementById ( 'run2' ).style.backgroundColor = "red" ;
+    } if(score>200){
+      buttonRun3.disabled=false;
+      document.getElementById ( 'run3' ).style.backgroundColor = "red" ;
+    }if(score>250){
+        buttonRun.disabled=false;
+        document.getElementById ( 'run' ).style.backgroundColor = "red" ;
+    }
+       
             if(clickdouble==true){
                  score+=1;
             }else if(clickboost==true){
                   score+=3;
             }else if(clickAuto== true){
+            
                 score+=4;
                 setTimeout(() => {clickAuto=false}, 30000);
+                
+              
+               
+
+
+            }else if(clickBonus== true){
+                  score+=250;
+                  clickBonus=false;
             }
             score++;
           
@@ -32,6 +88,11 @@ import * as toastr from 'toastr';
     });
     
     
+
+      
+
+
+
     document.getElementById("run").addEventListener("click", () => {
       if(cptBonus==1){
 
@@ -52,7 +113,7 @@ import * as toastr from 'toastr';
     }else if(cptBonus>1){
         var confirmer = confirm('vous voulez acheter ce Bonus 200% à '+250*cptBonus+'ptn ');
         if(confirmer==true && score>250*cptBonus){
-            score-=250*cpt;
+            score-=250*cptBonus;
             alert("felicitation vous avez obtenu ce bonus 200%");
             document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
               clickAuto=false;
@@ -105,7 +166,6 @@ import * as toastr from 'toastr';
           }
         }
       });
-
        }else if(cptDouble>1){
       toastr.info("Voulez-vous acheter ce multiplicateur *2 à " + (50*cptDouble) + "ptn ?", "Confirmation", {
         closeButton: true,
@@ -169,21 +229,25 @@ cptDouble++;
                 toastr.success("Félicitation, vous avez obtenu le bonus x5");
                 booster();
                 document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+
+ 
+
+     
                 clickboost=true;
                 clickdouble=false;
                 clickBonus=false;
                 clickAuto=false;
+                booster();
                
           }else{
 
             toastr.error("Désolé, vous n'avez pas assez de points pour acheter ce multiplicateur");
 
                     cptBooster--;
-
           }
         }
       });
-
+      
         }else if(cptBooster>1){
           toastr.info("Voulez-vous acheter ce multiplicateur x5 à " + (80*cptDouble) + "ptn ?", "Confirmation", {
             closeButton: true,
@@ -320,24 +384,27 @@ function booster(){
   }, 4000);
 }
 
+
+});
+
+function timeSecondeAzero(){
+  //const departMinutes = 1;
+  let temps = 0;
+        
+  const timerElement = document.getElementById("timeInSeconde");
   
-function timeSeconde(){
-    //const departMinutes = 1;
-    let temps = 0.5 * 60;
-          
-    const timerElement = document.getElementById("timeInSeconde");
-    
-    setInterval(() => {
-      let minutes = parseInt(temps / 60, 10);
-      let secondes = parseInt(temps % 60, 10);
-    
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      secondes = secondes < 10 ? "0" + secondes : secondes;
-    
-      timerElement.innerText = `${minutes}:${secondes}`;
-      temps = temps <= 0 ? 0 : temps - 1;
-    }, 1000);
-    
-   }
+  setInterval(() => {
+    let minutes = parseInt(temps / 60, 10);
+    let secondes = parseInt(temps % 60, 10);
+  
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+
+  
+    timerElement.innerText = `${minutes}:${secondes}`;
+    temps = temps <= 0 ? 0 : temps - 1;
+  }, 1000);
+  
+ }
 
 })();
