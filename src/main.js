@@ -29,11 +29,48 @@ import * as toastr from 'toastr';
             score++;
           
             document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
-    
     });
+    
+    
+    document.getElementById("run").addEventListener("click", () => {
+      if(cptBonus==1){
+
+        var confirmer = confirm('vous voulez acheter ce Bonus  à 250 ptn pour obtenir 200% ');
+     if(confirmer==true && score>250){
+         score-=250;
+         alert("felicitation vous avez obtenu le Bonus 200%");
+         document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+          clickAuto=false;
+          clickdouble=false;
+          clickBonus=true;
+          clickboost=false;
+            
+           
+     }else{
+            alert("erreur ");
+     }
+    }else if(cptBonus>1){
+        var confirmer = confirm('vous voulez acheter ce Bonus 200% à '+250*cptBonus+'ptn ');
+        if(confirmer==true && score>250*cptBonus){
+            score-=250*cpt;
+            alert("felicitation vous avez obtenu ce bonus 200%");
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+              clickAuto=false;
+              clickdouble=false;
+              clickBonus=true;
+              clickboost=false;
+              
+    }else{
+        cptBonus--;
+        alert("erreur ");
+ }
+}
+     cptBonus++; 
+     
+});
 
     document.getElementById("run1").addEventListener("click", () => {
-      
+
     if(cptDouble==1){
 
       toastr.info("Voulez-vous acheter ce multiplicateur x2 à 50 pts ?", "Confirmation", {
@@ -109,9 +146,7 @@ cptDouble++;
 
     document.getElementById("run2").addEventListener("click", () => {
 
-
         if(cptBooster==1){
-
 
             toastr.info("Voulez-vous acheter ce multiplicateur x5 à 80 pts ?", "Confirmation", {
             closeButton: true,
@@ -140,7 +175,11 @@ cptDouble++;
                 clickAuto=false;
                
           }else{
+
             toastr.error("Désolé, vous n'avez pas assez de points pour acheter ce multiplicateur");
+
+                    cptBooster--;
+
           }
         }
       });
@@ -180,8 +219,8 @@ cptDouble++;
                 });
               }
         cptBooster++;  
-      
 });
+
 
 document.getElementById("run3").addEventListener("click", () => {
 
@@ -271,7 +310,6 @@ function bonusx5(){
   setTimeout(() => {
     image.style.display = "none";
   }, 4000);
-  
 }
 
 function booster(){
@@ -280,7 +318,6 @@ function booster(){
   setTimeout(() => {
     image.style.display = "none";
   }, 4000);
-  
 }
 
   
@@ -302,6 +339,5 @@ function timeSeconde(){
     }, 1000);
     
    }
-
 
 })();
