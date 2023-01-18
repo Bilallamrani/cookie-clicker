@@ -45,7 +45,7 @@ import * as toastr from 'toastr';
     document.getElementById ( 'run1' ).style.backgroundColor = "blue" ;
     document.getElementById ( 'run2' ).style.backgroundColor = "blue" ;
     document.getElementById ( 'run3' ).style.backgroundColor = "blue" ;
-              document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+     document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
       
       });
   
@@ -67,19 +67,16 @@ import * as toastr from 'toastr';
        
             if(clickdouble==true){
                  score+=1;
+                
             }else if(clickboost==true){
                   score+=3;
-            }else if(clickAuto== true){
-            
-                score+=4;
-                setTimeout(() => {clickAuto=false}, 30000);
-                
-              
-               
-
+                 
+            }else if(clickAuto== true){ 
+                   score+=4;
+                   setTimeout(() => {clickAuto=false}, 30000);
 
             }else if(clickBonus== true){
-                  score+=250;
+                  score+=450;
                   clickBonus=false;
             }
             score++;
@@ -88,48 +85,84 @@ import * as toastr from 'toastr';
     });
     
     
+    document.getElementById("run").addEventListener("click", () => {
+      if(cptBonus==1){
+
+          toastr.info("Voulez-vous acheter ce Bonus  à 250 pts pour obtenir 200% ?", "Confirmation", {
+          closeButton: true,
+          tapToDismiss: false,
+          timeOut: 0,
+          extendedTimeOut: 0,
+          buttons: {
+            confirm: {
+                label: 'OK',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'Annuler',
+                className: 'btn-danger'
+            }
+        },
+        onclick: function() {
+     if( score > 250 ){
+         score-=250;
+         toastr.success("Félicitation, vous avez obtenu le bonus 200%");
+         document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+         document.getElementById('run').innerHTML = "250 ptns";
+          clickAuto=false;
+          clickdouble=false;
+          clickBonus=true;
+          clickboost=false;
+
+     }else{
+      toastr.error("Désolé, vous n'avez pas assez de points pour acheter ce bonus");
+    }
+  }
+});
+
+}else if(cptBonus>1){
+      toastr.info("Voulez-vous acheter ce Bonus  à 250 pts pour obtenir 200% ? " + (50*cptDouble) + "pts ?", "Confirmation", {
+        closeButton: true,
+        tapToDismiss: false,
+        timeOut: 0,
+        extendedTimeOut: 0,
+        buttons: {
+          confirm: {
+              label: 'OK',
+              className: 'btn-success'
+          },
+          cancel: {
+              label: 'Annuler',
+              className: 'btn-danger'
+          }
+      },
+    onclick: function() {
+        if(score > 250*cptBonus){
+            score-=250*cptBonus;
+            toastr.success("Félicitation, vous avez obtenu le bonus 200%");
+            document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+            document.getElementById('run').innerHTML = 250*cptBonus+" ptns";
+              clickAuto=false;
+              clickdouble=false;
+              clickBonus=true;
+              clickboost=false;
+
+    }else{
+        cptBonus--;
+        toastr.error("Désolé, vous n'avez pas assez de points pour acheter ce bonus");
+      }
+    }
+  });
+}
+     cptBonus++; 
+
+});
 
       
 
 
 
-    document.getElementById("run").addEventListener("click", () => {
-      if(cptBonus==1){
-
-        var confirmer = confirm('vous voulez acheter ce Bonus  à 250 ptn pour obtenir 200% ');
-     if(confirmer==true && score>250){
-         score-=250;
-         alert("felicitation vous avez obtenu le Bonus 200%");
-         document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-          clickAuto=false;
-          clickdouble=false;
-          clickBonus=true;
-          clickboost=false;
-            
-           
-     }else{
-            alert("erreur ");
-     }
-    }else if(cptBonus>1){
-        var confirmer = confirm('vous voulez acheter ce Bonus 200% à '+250*cptBonus+'ptn ');
-        if(confirmer==true && score>250*cptBonus){
-            score-=250*cptBonus;
-            alert("felicitation vous avez obtenu ce bonus 200%");
-            document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-              clickAuto=false;
-              clickdouble=false;
-              clickBonus=true;
-              clickboost=false;
-              
-    }else{
-        cptBonus--;
-        alert("erreur ");
- }
-}
-     cptBonus++; 
-     
-});
-
+    
     document.getElementById("run1").addEventListener("click", () => {
 
     if(cptDouble==1){
@@ -156,7 +189,7 @@ import * as toastr from 'toastr';
             toastr.success("Félicitation, vous avez obtenu le bonus x2");
             bonusx2();
             document.getElementById('clicker-counter').innerHTML = "score :" + score;
-            document.getElementById('run1').innerHTML = "50 ptn";
+            document.getElementById('run1').innerHTML = "50 ptns";
             clickdouble = true;
             clickBonus = false;
             clickboost = false;
@@ -188,7 +221,7 @@ import * as toastr from 'toastr';
         score -= 50*cptDouble;
         toastr.success("Félicitation, vous avez obtenu le bonus x2");
         document.getElementById('clicker-counter').innerHTML = "score :" + score;
-        document.getElementById('run1').innerHTML = 50*cptDouble+'ptn ';
+        document.getElementById('run1').innerHTML = 50*cptDouble+'ptns ';
         clickdouble = true;
         clickBonus = false;
         clickboost = false;
@@ -229,10 +262,7 @@ cptDouble++;
                 toastr.success("Félicitation, vous avez obtenu le bonus x5");
                 booster();
                 document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
-
- 
-
-     
+                document.getElementById('run2').innerHTML = "80 ptns";
                 clickboost=true;
                 clickdouble=false;
                 clickBonus=false;
@@ -270,6 +300,7 @@ cptDouble++;
               score -= 80*cptDouble;
               toastr.success("Félicitation, vous avez obtenu le bonus x5");
               document.getElementById ( 'clicker-counter' ) . innerHTML  = "score :"+score ;
+              document.getElementById('run2').innerHTML = 80*cptDouble+" ptns";
               clickboost=true;
               clickdouble=false;
               clickBonus=false;
@@ -311,13 +342,16 @@ document.getElementById("run3").addEventListener("click", () => {
               toastr.success("Félicitation, vous avez obtenu le Bonus x5 pendant 30 secondes");
               bonusx5();
               document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+              document.getElementById('run3').innerHTML = "200 ptns";
               clickAuto=true;
               clickdouble=false;
               clickBonus=false;
               clickboost=false;
               timeSeconde();
+      
 
           }else{
+              cptAuto--;
               toastr.error("erreur : vous n'avez pas assez de points pour acheter ce Bonus");
           }
       }
@@ -344,11 +378,13 @@ document.getElementById("run3").addEventListener("click", () => {
                   toastr.success("Félicitation, vous avez obtenu le Bonus x5 pendant 30 secondes");
                   bonusx5();
                   document.getElementById ( 'clicker-counter' ) . innerHTML  = +score ;
+                  document.getElementById('run3').innerHTML = 200*cptAuto+" ptns";
                   clickAuto=true;
                   clickdouble=false;
                   clickBonus=false;
                   clickboost=false;
                   timeSeconde();
+                 
               }else{
                   cptAuto--;
                   toastr.error("Désolé, vous n'avez pas assez de points pour acheter ce Bonus");
@@ -356,6 +392,7 @@ document.getElementById("run3").addEventListener("click", () => {
           }
       });
   }
+  setTimeout(() => {score=+4}, 30000);
   cptAuto++;
 });
 
@@ -385,12 +422,12 @@ function booster(){
 }
 
 
-});
 
-function timeSecondeAzero(){
+
+function timeSeconde(){
   //const departMinutes = 1;
-  let temps = 0;
-        
+  let temps = 0.5 * 60;
+          
   const timerElement = document.getElementById("timeInSeconde");
   
   setInterval(() => {
@@ -399,12 +436,15 @@ function timeSecondeAzero(){
   
     minutes = minutes < 10 ? "0" + minutes : minutes;
     secondes = secondes < 10 ? "0" + secondes : secondes;
-
   
     timerElement.innerText = `${minutes}:${secondes}`;
     temps = temps <= 0 ? 0 : temps - 1;
   }, 1000);
   
- }
+   
 
+ }
 })();
+
+
+
