@@ -51,17 +51,17 @@ import "./index.css";
   document.getElementById("cookie").addEventListener("click", () => {
     if(score > 50){
       buttonRun1.disabled= false;
-      document.getElementById ( 'run1' ).style.backgroundColor = "red" ;
+      document.getElementById ( 'run1' ).style.backgroundColor = "yellow" ;
       
     } if(score>80){
       buttonRun2.disabled=false;
-      document.getElementById ( 'run2' ).style.backgroundColor = "red" ;
+      document.getElementById ( 'run2' ).style.backgroundColor = "yellow" ;
     } if(score>200){
       buttonRun3.disabled=false;
-      document.getElementById ( 'run3' ).style.backgroundColor = "red" ;
+      document.getElementById ( 'run3' ).style.backgroundColor = "yellow" ;
     }if(score>250){
         buttonRun.disabled=false;
-        document.getElementById ( 'run' ).style.backgroundColor = "red" ;
+        document.getElementById ( 'run' ).style.backgroundColor = "yellow" ;
     }
        
             if(clickdouble==true){
